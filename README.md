@@ -43,6 +43,11 @@ This table shows the data related to my favourite food items. Which i would reco
 
 ## Code Fencing
 
+
+  > The Shortest Path Faster Algorithm (SPFA) is an improvement of the Bellman–Ford algorithm which computes single-source shortest paths in a weighted directed graph. The algorithm is believed to work well on random sparse graphs and is particularly suitable for graphs that contain negative-weight edges. However, the worst-case complexity of SPFA is the same as that of Bellman–Ford, so for graphs with nonnegative edge weights Dijkstra's algorithm is preferred. The SPFA algorithm was first published by Edward F. Moore in 1959, as a generalization of breadth first search; SPFA is Moore's “Algorithm D.” The name, “Shortest Path Faster Algorithm (SPFA),” was given by FanDing Duan, a Chinese researcher who rediscovered the algorithm in 1994.
+
+  [Shortest Path Faster Algorithm](https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm#cite_note-duan-3)
+
  const int INF = 1000000000;
  vector<vector<pair<int, int>>> adj;
 
@@ -80,22 +85,4 @@ This table shows the data related to my favourite food items. Which i would reco
      return true;
  }
 
-  > The Shortest Path Faster Algorithm (SPFA) is an improvement of the Bellman–Ford algorithm which computes single-source shortest paths in a weighted directed graph. The algorithm is believed to work well on random sparse graphs and is particularly suitable for graphs that contain negative-weight edges. However, the worst-case complexity of SPFA is the same as that of Bellman–Ford, so for graphs with nonnegative edge weights Dijkstra's algorithm is preferred. The SPFA algorithm was first published by Edward F. Moore in 1959, as a generalization of breadth first search; SPFA is Moore's “Algorithm D.” The name, “Shortest Path Faster Algorithm (SPFA),” was given by FanDing Duan, a Chinese researcher who rediscovered the algorithm in 1994.
-
-  [Shortest Path Faster Algorithm](https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm#cite_note-duan-3)
-
-
-
-      for each vertex v ≠ s in V(G)
-          d(v) := ∞
-      d(s) := 0
-      push s into Q
-      while Q is not empty do
-          u := poll Q
-          for each edge (u, v) in E(G) do
-              if d(u) + w(u, v) < d(v) then
-                  d(v) := d(u) + w(u, v)
-                 if v is not in Q then
-                     push v into Q
-
-[Code Source](https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm#cite_note-duan-3)
+[Code Source](https://cp-algorithms.com/graph/bellman_ford.html)
