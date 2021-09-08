@@ -24,12 +24,24 @@ This table shows the data related to my favourite food items. Which i would reco
 
 |FOOD|LOCATION|AMOUNT|
 |---|---|---|
-|Pizza|Pizza Hut|15$|
-|Biryani|Bawarchi|30$|
-|Burger|Mcd|2$|
-|Pasta|Wall Mart|6$|
+|Pizza|Pizza Hut|$15|
+|Biryani|Bawarchi|$30|
+|Burger|Mcd|$2|
+|Pasta|Wall Mart|$6|
 
+---
 
+## Quotes I like
+
+>The greatest glory in living lies not in never falling, but in rising every time we fall.
+-*Nelson Mandela*
+
+>The way to get started is to quit talking and begin doing.
+-*Walt Disney*
+
+---
+
+## Code Fencing
 
  const int INF = 1000000000;
  vector<vector<pair<int, int>>> adj;
