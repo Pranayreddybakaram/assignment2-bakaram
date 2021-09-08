@@ -19,7 +19,7 @@ Hyderabad is the capital and largest city of the South Indian state of Telangana
 ---
 
 ## tables
----
+
 This table shows the data related to my favourite food items. Which i would recommend others.
 
 |FOOD|LOCATION|AMOUNT|
@@ -31,55 +31,59 @@ This table shows the data related to my favourite food items. Which i would reco
 
 
 
-  int m, n;  
-  vector<long long> dp_before(n), dp_cur(n);  
+ const int INF = 1000000000;
+ vector<vector<pair<int, int>>> adj;
 
-  long long C(int i, int j);
+ bool spfa(int s, vector<int>& d) {
+     int n = adj.size();
+     d.assign(n, INF);
+     vector<int> cnt(n, 0);
+     vector<bool> inqueue(n, false);
+     queue<int> q;
 
-  // compute dp_cur[l], ... dp_cur[r] (inclusive)
-  void compute(int l, int r, int optl, int optr) {
-      if (l > r)
-         return;
+     d[s] = 0;
+     q.push(s);
+     inqueue[s] = true;
+     while (!q.empty()) {
+         int v = q.front();
+         q.pop();
+         inqueue[v] = false;
 
-      int mid = (l + r) >> 1;
-      pair<long long, int> best = {LLONG_MAX, -1};
+         for (auto edge : adj[v]) {
+             int to = edge.first;
+             int len = edge.second;
 
-      for (int k = optl; k <= min(mid, optr); k++) {
-          best = min(best, {(k ? dp_before[k - 1] : 0) + C(k, mid), k});
-      }
+             if (d[v] + len < d[to]) {
+                 d[to] = d[v] + len;
+                 if (!inqueue[to]) {
+                     q.push(to);
+                     inqueue[to] = true;
+                     cnt[to]++;
+                     if (cnt[to] > n)
+                         return false;  // negative cycle
+                 }
+             }
+         }
+     }
+     return true;
+ }
 
-      dp_cur[mid] = best.first;
-      int opt = best.second;
+  > The Shortest Path Faster Algorithm (SPFA) is an improvement of the Bellman–Ford algorithm which computes single-source shortest paths in a weighted directed graph. The algorithm is believed to work well on random sparse graphs and is particularly suitable for graphs that contain negative-weight edges. However, the worst-case complexity of SPFA is the same as that of Bellman–Ford, so for graphs with nonnegative edge weights Dijkstra's algorithm is preferred. The SPFA algorithm was first published by Edward F. Moore in 1959, as a generalization of breadth first search; SPFA is Moore's “Algorithm D.” The name, “Shortest Path Faster Algorithm (SPFA),” was given by FanDing Duan, a Chinese researcher who rediscovered the algorithm in 1994.
 
-      compute(l, mid - 1, optl, opt);
-      compute(mid + 1, r, opt, optr);
-  }
-
-  int solve() {
-      for (int i = 0; i < n; i++)
-          dp_before[i] = C(0, i);
-
-      for (int i = 1; i < m; i++) {
-          compute(0, n - 1, 0, n - 1);
-          dp_before = dp_cur;
-      }
-
-      return dp_before[n - 1];
-  }
-
-
-
-  > In both contexts it refers to simplifying a complicated problem by breaking it down into simpler sub-problems in a recursive manner. While some decision problems cannot be taken apart this way, decisions that span several points in time do often break apart recursively. Likewise, in computer science, if a problem can be solved optimally by breaking it into sub-problems and then recursively finding the optimal solutions to the sub-problems, then it is said to have optimal substructure.
-
-  [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming)
-
+  [Shortest Path Faster Algorithm](https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm#cite_note-duan-3)
 
 
-    var m := map(0 → 0, 1 → 1)  
-  function fib(n)  
-      if key n is not in map m  
-          m[n] := fib(n − 1) + fib(n − 2)  
-      return m[n]  
 
+      for each vertex v ≠ s in V(G)
+          d(v) := ∞
+      d(s) := 0
+      push s into Q
+      while Q is not empty do
+          u := poll Q
+          for each edge (u, v) in E(G) do
+              if d(u) + w(u, v) < d(v) then
+                  d(v) := d(u) + w(u, v)
+                 if v is not in Q then
+                     push v into Q
 
-[Code Source](https://en.wikipedia.org/wiki/Dynamic_programming)
+[Code Source](https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm#cite_note-duan-3)
