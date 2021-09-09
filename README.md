@@ -48,6 +48,7 @@ This table shows the data related to my favourite food items. Which i would reco
 
   [Shortest Path Faster Algorithm](https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm#cite_note-duan-3)
 
+~~~
  const int INF = 1000000000;
  vector<vector<pair<int, int>>> adj;
 
@@ -84,5 +85,6 @@ This table shows the data related to my favourite food items. Which i would reco
      }
      return true;
  }
+~~~
 
 [Code Source](https://cp-algorithms.com/graph/bellman_ford.html)
